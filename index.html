@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Меню Бургер</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">    
+</head>
+<body>
+    <!-- Блок SECTION будет служить нам в качестве основного контейнера -->
+    <div class="section"> 
+
+        <!-- Так как навигационная панель образует общую логику, то её нужно
+        содержать в общем блоке-обертке MENU. Далее этот блок поможет скрыть дефекты
+        выезжающих элементов -->
+        <div class="menu">
+
+            <!-- Блок MENU__NAV предназначен для того, чтобы содержать все ссылки.
+            К тому же, использование тэга NAV, помогает поисковикам определять,
+            что этот блок служит в качестве навигационного меню -->
+            <nav class="menu__nav">
+                <a href="#" class="menu__link">Home</a>
+                <a href="#" class="menu__link">Products</a>
+                <a href="#" class="menu__link">About</a>
+                <a href="#" class="menu__link">Contacts</a>
+            </nav>
+
+            <!-- Ссылка MENU-BTN, внутри которой содержится span, являющийся тем самым "котлетой" бургера -->
+            <a href="#" class="menu-btn">
+                <span></span>
+            </a>
+
+        </div>
+
+    </div>
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>

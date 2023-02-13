@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* font-family: 'Saira', sans-serif; */
+* {
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Saira', sans-serif; 
+    font-size: 16px;
+    background-color: #ffec40;
+}
+
+.section {
+    /* Размеры для главной обертки страницы во всю ширину и высоту */
+    width: 100%; height: 100%;
+
+    /* Абсолютное позиционирование */
+    position: absolute;
+
+    /* Делаем блок гибким для манипуляций */
+    display: flex;
+
+    /* Размещение элементов и контента по середине горизонтали и вертикали */
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-btn {
+    /* Относительное позиционирование для всех дочерних элементов */
+    position: relative;
+
+    /* Делаем элемент a - ссылку - блочным, чтобы можно было задавать ширину и высоту */
+    display: block;
+
+    /* Косметические преобразования и размеры */
+    border-radius: 50%;
+    width: 200px; height: 200px;
+    background-color: #fff;
+}
+
+/* ------------------------------------------------------ БУРГЕР ---------------------------------------------------- */
+
+span {
+    /* Абсолютное позииционирование для возможности смещения элемента в разные стороны без влияния на свое окружения  */
+    position: absolute;
+
+    /* Размеры элемента */
+    width: 100px; height: 10px;
+
+    /* Смещение вверх на 50% и минус 5px */
+    top: 50%; margin-top: -5px;
+
+    /* Смещение влево на 50% и минус 50px */
+    left: 50%; margin-left: -50px;
+
+    /* Фоновый цвет элемента*/
+    background-color: rgb(0, 0, 0);
+}
+
+span::before, 
+span::after {
+    content: '';
+
+    /* Те же настройки, что и у span */
+    position: absolute;
+    width: 100px; height: 10px;
+    top: 50%; margin-top: -5px;
+    left: 50%; margin-left: -50px;
+    background-color: rgb(0, 0, 0);
+
+    transition: all 0.2s ease;
+}
+
+span::before {
+    /* Сместим элемент ДО на минус 25px по оси Y */
+    transform: translateY(-25px);
+}
+
+span::after {
+    /* Сместим элемент ПОСЛЕ на 25px по оси Y */
+    transform: translateY(25px);
+}
+
+/* АНИМАЦИЯ - КРЕСТИК ЗАКРЫТИЯ МЕНЮ */
+.is-click span {
+    height: 0;
+}
+
+.is-click span::before {
+    transform: rotate(45deg);
+}
+
+.is-click span::after {
+    transform: rotate(-45deg);    
+}
+
+/* АНИМАЦИЯ - СТРЕЛОЧКА ЗАКРЫТИЯ МЕНЮ */
+/* .is-click span {
+}
+
+.is-click span::before {
+    transform: rotate(35deg);  
+    transform-origin: left bottom;
+    width: 60px;  
+}
+
+.is-click span::after {
+    transform: rotate(-35deg);
+    transform-origin: left top;
+    width: 60px;        
+} */
+
+/* _____________________________________________________ БУРГЕР _____________________________________________________ */
+
+
+.menu {
+    /* Зададим родителю display: flex;, чтобы выравнить навигационное меню и бургер по горизонтали */
+    display: flex;
+
+    /* Расположим все элементы ровно по центру горизонтали, на одном "шампуре" */
+    align-items: center;
+    
+    /* Чтобы справа от бургера, не виднелся белый фон навигационного меню, мы скругляем
+    этого родителя точно так же, как и само навигационное меню */
+    border-top-right-radius: 115px;
+    border-bottom-right-radius: 115px;
+
+    /* К тому же, всё, что выходит за рамки этого родителя, скрываем. Тем самым, белый фон
+    навигационного меню скроется за родителем, который скруглен также */
+    overflow: hidden;
+    
+}
+
+.menu__nav {
+
+    /* Расположим все ссылки в одну линию по горизонтали и выравним ровно по центру */
+    display: flex;
+    align-items: center;
+
+    /* Зададим цвет фона, отступы внутри и снаружи, а также высоту блока, равную высоте бургера,
+    чтобы слить их в одно целое */
+    background-color: #fff;
+    padding-left: 80px;
+    padding-right: 80px;
+    height: 200px;
+
+    /* Используем негативный отступ, чтобы слить навигационное меню и бургер в одно целое */
+    margin-right: -100px;
+    
+
+    /* Скруглим левый верхний и нижний угол блока */
+    border-top-left-radius: 115px;
+    border-bottom-left-radius: 115px;
+
+    /* Пропишем плавность всех трансформаций */
+    transition: all 0.5s ease;
+
+    /* Обозначим, что блок должен трансформироваться справа в центре */
+    transform-origin: right center;
+
+    /* Скроем по оси Х на 100% */
+    transform: translateX(100%);
+
+    /* Сделаем нулевую видимость, чтобы его не было видно вовсе */
+    opacity: 0;
+}
+
+.menu__nav_active {
+
+    /* При добавлении этого класса с помощью JS, убираем скрытие по оси Х */
+    transform:  translateX(0%);
+
+    /* Делаем блок непрозрачным, чтобы он появился */
+    opacity: 1;    
+}
+
+.menu__link {
+    /* Пусть ссылки ведут себя как блочные, но сайтом распознаются как строчные */
+    display: inline-block;
+
+    /* Задаем косметику ссылкам */
+    text-decoration: none;
+    text-transform: uppercase;
+    color: rgb(0, 0, 0);
+    font-size: 50px;
+    margin-right: 150px;
+}
